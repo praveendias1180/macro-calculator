@@ -9,7 +9,6 @@ import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import McAge from "./mc-age"
 import McHeight from "./mc-height"
-import { Block } from "@mui/icons-material"
 import { alpha } from "@mui/material/styles"
 import McGender from "./mc-gender"
 
@@ -124,7 +123,7 @@ export default function MCStepper() {
           mb: 1,
           px: 1,
           py: 1,
-          bgcolor: "background.paper",
+          backgroundColor: theme => alpha("#ffffff", 0.95),
           boxShadow: 3,
           borderRadius: 1,
           minWidth: 300,
