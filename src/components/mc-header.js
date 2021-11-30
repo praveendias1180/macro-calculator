@@ -20,7 +20,7 @@ const McHeader = () => {
         minWidth: 300,
       }}
     >
-      <Typography sx={{ fontSize: "h6.fontSize", color: '#ffffff' }}>
+      <Typography className="macro-display" sx={{ fontSize: "h6.fontSize", color: '#ffffff', textAlign: 'center' }}>
         Find Out The Perfect Diet & Training Plan for Your Body
       </Typography>
     </Box>

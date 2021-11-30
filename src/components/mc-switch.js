@@ -22,8 +22,8 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
          * https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Getting_Started
          */
         backgroundImage: `url('data:image/svg+xml,<svg version="1.1" width="32" height="32" xmlns="http://www.w3.org/2000/svg">\
-        <circle cx="16" cy="16" r="14" stroke="blue" fill="transparent" stroke-width="4" id="MyReact" />\
-        <text x="16" y="22" font-size="18" text-anchor="middle" fill="blue">ft</text>\
+        <circle cx="16" cy="16" r="14" fill="transparent" stroke-width="4" style="stroke: %23523637;" id="MyReact" />\
+        <text x="16" y="22" font-size="18" text-anchor="middle" style="fill: %23523637;">ft</text>\
         </svg>')`,
       },
       "& + .MuiSwitch-track": {
@@ -51,7 +51,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
          * https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Getting_Started
          */
       backgroundImage: `url('data:image/svg+xml,<svg version="1.1" width="32" height="32" xmlns="http://www.w3.org/2000/svg">\
-        <circle cx="16" cy="16" r="16" fill="red" />\
+        <circle cx="16" cy="16" r="16" style="fill: %23523637;;"/>\
         <text x="16" y="20" font-size="16" text-anchor="middle" fill="white">cm</text>\
         </svg>')`,
     },
@@ -75,13 +75,14 @@ export default function McSwitch(props) {
       <FormControlLabel
         control={
           <MaterialUISwitch
-            sx={{ m: 1 }}
             checked={! props.metric}
             onChange={handleChange}
+            sx={{ mb: 2}}
           />
         }
-        label="Units"
+        label=""
         labelPlacement="bottom"
+        sx={{ mb: 5, pb: 1}}
       />
     </FormGroup>
   )

@@ -69,26 +69,25 @@ const McHeight = () => {
     }
   }
 
-  function cm_to_in(cm){
-    return Math.floor(cm / 2.54);
+  function cm_to_in(cm) {
+    return Math.floor(cm / 2.54)
   }
 
-  function in_to_cm(inch){
-    return Math.floor(inch * 2.54);
+  function in_to_cm(inch) {
+    return Math.floor(inch * 2.54)
   }
 
   function handleSwitch(state) {
-    setMetric(! metric)
-    if(metric){
+    setMetric(!metric)
+    if (metric) {
       setValue(cm_to_in(valueM))
     } else {
       setValue(in_to_cm(value))
     }
-
   }
 
-  function onSliderChange(event, val){
-    if(metric){
+  function onSliderChange(event, val) {
+    if (metric) {
       setMValue(val)
       setValue(cm_to_in(val))
     } else {
@@ -105,30 +104,34 @@ const McHeight = () => {
         alignItems: "center",
       }}
     >
-      <Typography sx={{ fontSize: "h6.fontSize", mb: 4 }}>
+      <Typography className="macro-heading" sx={{ fontSize: "h6.fontSize", mb: 4 }}>
         Your Height
       </Typography>
-      <Stack direction="row" spacing={1} alignItems="center">
+      <Stack
+        sx={{ flexDirection: { sx: "column", sm: "row" } }}
+        spacing={1}
+        alignItems="top"
+      >
         <McSwitch
           defaultChecked
           handleSwitch={handleSwitch}
           metric={metric}
           inputProps={{ "aria-label": "ant design" }}
         />
+        <Box sx={{ pt: 1  }}>
         <Slider
-          sx={{ minWidth: 300 }}
+          sx={{ minWidth: 300}}
           aria-label="Height"
           defaultValue={70}
           value={metric ? valueM : value}
-          valueLabelFormat={value => (
-            <div>{numFormatter(value)}</div>
-          )}
+          valueLabelFormat={value => <div>{numFormatter(value)}</div>}
           onChange={onSliderChange}
           valueLabelDisplay="on"
           marks={metric ? marks_metric : marks}
           min={metric ? start_cm : start_in}
           max={metric ? end_cm : end_in}
         />
+        </Box>
       </Stack>
     </Box>
   )
