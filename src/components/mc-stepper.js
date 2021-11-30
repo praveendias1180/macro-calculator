@@ -106,15 +106,15 @@ export default function MCStepper() {
           backgroundColor: theme => alpha("#ffffff", 0.95),
           boxShadow: 3,
           borderRadius: 1,
-          minWidth: 300,
+          minWidth: 200,
           minHeight: 200,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        {activeStep === 0 ? <McGender /> : null}
-        {activeStep === 1 ? <McAge /> : null}
+        {activeStep === 0 ? <McGender handleNext={handleNext} /> : null}
+        {activeStep === 1 ? <McAge handleNext={handleNext} /> : null}
         {activeStep === 2 ? <McHeight /> : null}
       </Box>
       <Box
@@ -126,7 +126,7 @@ export default function MCStepper() {
           backgroundColor: theme => alpha("#ffffff", 0.95),
           boxShadow: 3,
           borderRadius: 1,
-          minWidth: 300,
+          minWidth: 200,
         }}
       >
         {activeStep === steps.length ? (

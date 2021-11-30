@@ -39,16 +39,8 @@ const marks_metric = [
     label: "130 cm",
   },
   {
-    value: 150,
-    label: "150 cm",
-  },
-  {
     value: 170,
     label: "170 cm",
-  },
-  {
-    value: 190,
-    label: "190 cm",
   },
   {
     value: 210,
@@ -120,7 +112,7 @@ const McHeight = () => {
         />
         <Box sx={{ pt: 1  }}>
         <Slider
-          sx={{ minWidth: 300}}
+          sx={{ minWidth: { xs: 200, sm: 350} }}
           aria-label="Height"
           defaultValue={70}
           value={metric ? valueM : value}

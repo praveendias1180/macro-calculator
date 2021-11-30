@@ -17,7 +17,7 @@ const McHeader = () => {
         backgroundColor: (theme) => alpha('#000000', 0.5),
         boxShadow: 3,
         borderRadius: 1,
-        minWidth: 300,
+        minWidth: 200,
       }}
     >
       <Typography className="macro-display" sx={{ fontSize: "h6.fontSize", color: '#ffffff', textAlign: 'center' }}>

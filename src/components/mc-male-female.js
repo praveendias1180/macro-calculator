@@ -81,11 +81,17 @@ const ImageMarked = styled('span')(({ theme }) => ({
   transition: theme.transitions.create('opacity'),
 }));
 
-export default function MaleFemaleButtons() {
+
+export default function MaleFemaleButtons(props) {
+  function handleClick(){
+    props.handleNext();
+    console.log('Clicked Gender');
+  }
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 200, width: '100%' }}>
       {images.map((image) => (
         <ImageButton
+          onClick={handleClick}
           focusRipple
           key={image.title}
           style={{

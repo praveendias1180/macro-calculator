@@ -1,7 +1,7 @@
 import React from "react"
 import Typography from "@mui/material/Typography"
 import MaleFemaleButtons from "./mc-male-female"
-const McGender = () => {
+const McGender = (props) => {
   return (
     <>
       <Typography
@@ -10,7 +10,7 @@ const McGender = () => {
       >
         Male or Female
       </Typography>
-      <MaleFemaleButtons></MaleFemaleButtons>
+      <MaleFemaleButtons handleNext={props.handleNext}></MaleFemaleButtons>
     </>
   )
 }

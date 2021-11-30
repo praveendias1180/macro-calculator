@@ -38,7 +38,7 @@ const theme = createTheme({
 export default function MacroCalc() {
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="md">
+      <Container component="main" maxWidth="md" sx={{ padding: { xs: '2px', sm: 2} }}>
         <CssBaseline />
         <McHeader />
         <Box
@@ -48,7 +48,7 @@ export default function MacroCalc() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            minWidth: 360,
+            minWidth: 200,
           }}
         >
           <MCStepper />

@@ -3,18 +3,23 @@ import Typography from "@mui/material/Typography"
 import Button from "@mui/material/Button"
 import Box from "@mui/material/Box"
 import ButtonGroup from "@mui/material/ButtonGroup"
-const buttons = [
-  <Button key="teen">TEEN</Button>,
-  <Button key="20">20's</Button>,
-  <Button key="30">30's</Button>,
+const McAge = (props) => {
+  function handleClick(age){
+    props.handleNext()
+    console.log(age);
+  }
+
+  const buttons = [
+  <Button onClick={() => handleClick(10)} key="teen">TEEN</Button>,
+  <Button onClick={() => handleClick(20)} key="20">20's</Button>,
+  <Button onClick={() => handleClick(30)} key="30">30's</Button>,
 ]
 
 const buttons2 = [
-  <Button key="40">40's</Button>,
-  <Button key="50">50's</Button>,
-  <Button key="60">60's</Button>,
+  <Button onClick={() => handleClick(40)} key="40">40's</Button>,
+  <Button onClick={() => handleClick(50)} key="50">50's</Button>,
+  <Button onClick={() => handleClick(60)} key="60">60's</Button>,
 ]
-const McAge = () => {
   return (
     <>
       <Typography
