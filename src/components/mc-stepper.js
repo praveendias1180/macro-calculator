@@ -12,11 +12,11 @@ import McHeight from "./mc-height"
 import { alpha } from "@mui/material/styles"
 import McGender from "./mc-gender"
 
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { increment } from '../features/counter/counterSlice'
 import McResults from "./mc-results"
 
-const steps = ["Gender", "Age", "Height"]
+const steps = ["Gender", "Age", "Height", "Weight", "Activity", "Result"]
 
 export default function MCStepper() {
   const dispatch = useDispatch()
@@ -46,21 +46,6 @@ export default function MCStepper() {
 
   const handleBack = () => {
     setActiveStep(prevActiveStep => prevActiveStep - 1)
-  }
-
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.")
-    }
-
-    setActiveStep(prevActiveStep => prevActiveStep + 1)
-    setSkipped(prevSkipped => {
-      const newSkipped = new Set(prevSkipped.values())
-      newSkipped.add(activeStep)
-      return newSkipped
-    })
   }
 
   const handleReset = () => {
@@ -123,7 +108,10 @@ export default function MCStepper() {
         {activeStep === 0 ? <McGender handleNext={handleNext} /> : null}
         {activeStep === 1 ? <McAge handleNext={handleNext} /> : null}
         {activeStep === 2 ? <McHeight /> : null}
-        {activeStep === 3 ? <McResults /> : null}
+        {activeStep === 3 ? <McAge handleNext={handleNext} /> : null}
+        {activeStep === 4 ? <McHeight /> : null}
+        {activeStep === 5 ? <McGender handleNext={handleNext} /> : null}
+        {activeStep === 6 ? <McResults /> : null}
       </Box>
       <Box
         sx={{
