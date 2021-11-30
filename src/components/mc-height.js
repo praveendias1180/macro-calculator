@@ -5,6 +5,9 @@ import Typography from "@mui/material/Typography"
 import McSwitch from "./mc-switch"
 import Stack from "@mui/material/Stack"
 
+import { useSelector, useDispatch } from 'react-redux'
+import { set_height } from '../features/calc/calcSlice'
+
 let start_ft = 4
 let start_in = start_ft * 12
 
@@ -49,9 +52,15 @@ const marks_metric = [
 ]
 
 const McHeight = () => {
+
+  const count = useSelector((state) => state.calc.gender)
+  const dispatch = useDispatch()
+
   const [value, setValue] = React.useState(70)
   const [valueM, setMValue] = React.useState(178)
   const [metric, setMetric] = React.useState(false)
+
+  dispatch(set_height(value))
 
   function numFormatter(value) {
     if (metric) {
@@ -82,9 +91,11 @@ const McHeight = () => {
     if (metric) {
       setMValue(val)
       setValue(cm_to_in(val))
+      dispatch(set_height(cm_to_in(val)))
     } else {
       setMValue(in_to_cm(val))
       setValue(val)
+      dispatch(set_height(val))
     }
   }
 

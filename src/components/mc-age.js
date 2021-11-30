@@ -3,8 +3,16 @@ import Typography from "@mui/material/Typography"
 import Button from "@mui/material/Button"
 import Box from "@mui/material/Box"
 import ButtonGroup from "@mui/material/ButtonGroup"
+
+import { useSelector, useDispatch } from 'react-redux'
+import { set_age } from '../features/calc/calcSlice'
+
 const McAge = (props) => {
+
+  const dispatch = useDispatch()
+
   function handleClick(age){
+    dispatch(set_age(age))
     props.handleNext()
     console.log(age);
   }

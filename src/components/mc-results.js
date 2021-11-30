@@ -5,9 +5,12 @@ import MaleFemaleButtons from "./mc-male-female"
 import { useSelector, useDispatch } from 'react-redux'
 import { set_gender } from '../features/calc/calcSlice'
 
-const McGender = (props) => {
+const McResults = (props) => {
 
-  const count = useSelector((state) => state.calc.gender)
+  const gender = useSelector((state) => state.calc.gender)
+  const age = useSelector((state) => state.calc.age)
+  const height = useSelector((state) => state.calc.height)
+
   const dispatch = useDispatch()
 
   function handleNext(gender){
@@ -21,11 +24,13 @@ const McGender = (props) => {
         className="macro-heading"
         sx={{ fontSize: "h6.fontSize", mb: 4 }}
       >
-        Male or Female
+       Results 
       </Typography>
-      <MaleFemaleButtons handleNext={handleNext}></MaleFemaleButtons>
+       <p>Gender: {gender}</p>
+       <p>Age: {age}</p>
+       <p>Height: {height}</p>
     </>
   )
 }
 
-export default McGender
+export default McResults

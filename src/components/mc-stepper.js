@@ -12,9 +12,15 @@ import McHeight from "./mc-height"
 import { alpha } from "@mui/material/styles"
 import McGender from "./mc-gender"
 
+import { useSelector, useDispatch } from 'react-redux'
+import { increment } from '../features/counter/counterSlice'
+import McResults from "./mc-results"
+
 const steps = ["Gender", "Age", "Height"]
 
 export default function MCStepper() {
+  const dispatch = useDispatch()
+
   const [activeStep, setActiveStep] = React.useState(0)
   const [skipped, setSkipped] = React.useState(new Set())
 
@@ -27,6 +33,7 @@ export default function MCStepper() {
   }
 
   const handleNext = () => {
+    dispatch(increment())
     let newSkipped = skipped
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values())
@@ -116,6 +123,7 @@ export default function MCStepper() {
         {activeStep === 0 ? <McGender handleNext={handleNext} /> : null}
         {activeStep === 1 ? <McAge handleNext={handleNext} /> : null}
         {activeStep === 2 ? <McHeight /> : null}
+        {activeStep === 3 ? <McResults /> : null}
       </Box>
       <Box
         sx={{
@@ -148,11 +156,6 @@ export default function MCStepper() {
                 Back
               </Button>
               <Box sx={{ flex: "1 1 auto" }} />
-              {isStepOptional(activeStep) && (
-                <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                  Skip
-                </Button>
-              )}
 
               <Button onClick={handleNext}>
                 {activeStep === steps.length - 1 ? "Finish" : "Next"}
