@@ -22,7 +22,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: [
-      "Fira Code",
+      "Slabo 27px",
       "-apple-system",
       "BlinkMacSystemFont",
       '"Segoe UI"',

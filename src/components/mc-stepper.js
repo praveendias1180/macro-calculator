@@ -15,6 +15,7 @@ import McGender from "./mc-gender"
 import { useDispatch } from 'react-redux'
 import { increment } from '../features/counter/counterSlice'
 import McResults from "./mc-results"
+import McDialog from "./mc-dialog"
 
 const steps = ["Gender", "Age", "Height", "Weight", "Activity", "Result"]
 
@@ -23,6 +24,15 @@ export default function MCStepper() {
 
   const [activeStep, setActiveStep] = React.useState(0)
   const [skipped, setSkipped] = React.useState(new Set())
+  const [modelFormOpen, setModalFormOpen] = React.useState(false);
+
+  const handleModalFormClickOpen = () => {
+    setModalFormOpen(true);
+  };
+
+  const handleModalFormClose = () => {
+    setModalFormOpen(false);
+  };
 
   const isStepOptional = step => {
     return step === 1
@@ -34,6 +44,11 @@ export default function MCStepper() {
 
   const handleNext = () => {
     dispatch(increment())
+
+    if(activeStep === steps.length - 1){
+      handleModalFormClickOpen();
+    }
+
     let newSkipped = skipped
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values())
@@ -58,6 +73,7 @@ export default function MCStepper() {
 
   return (
     <Box sx={{ width: "100%" }}>
+      <McDialog modelFormOpen={modelFormOpen} handleModalFormClose={handleModalFormClose} />
       <Stepper
         sx={{
           backgroundColor: theme => alpha("#ffffff", 0.95),
