@@ -4,7 +4,7 @@ import FormGroup from "@mui/material/FormGroup"
 import FormControlLabel from "@mui/material/FormControlLabel"
 import Switch from "@mui/material/Switch"
 
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+const MaterialUISwitch = styled(Switch)(({ theme, option1, option2 }) => ({
   width: 62,
   height: 34,
   padding: 7,
@@ -23,7 +23,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
          */
         backgroundImage: `url('data:image/svg+xml,<svg version="1.1" width="32" height="32" xmlns="http://www.w3.org/2000/svg">\
         <circle cx="16" cy="16" r="14" fill="transparent" stroke-width="4" style="stroke: %23523637;" id="MyReact" />\
-        <text x="16" y="22" font-size="18" text-anchor="middle" style="fill: %23523637;">ft</text>\
+        <text x="16" y="22" font-size="18" text-anchor="middle" style="fill: %23523637;">` +  option2 + `</text>\
         </svg>')`,
       },
       "& + .MuiSwitch-track": {
@@ -52,7 +52,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
          */
       backgroundImage: `url('data:image/svg+xml,<svg version="1.1" width="32" height="32" xmlns="http://www.w3.org/2000/svg">\
         <circle cx="16" cy="16" r="16" style="fill: %23523637;;"/>\
-        <text x="16" y="20" font-size="16" text-anchor="middle" fill="white">cm</text>\
+        <text x="16" y="20" font-size="16" text-anchor="middle" fill="white">` +  option1 + `</text>\
         </svg>')`,
     },
   },
@@ -78,6 +78,8 @@ export default function McSwitch(props) {
             checked={! props.metric}
             onChange={handleChange}
             sx={{ mb: 2}}
+            option1={ props.option1 }
+            option2={ props.option2 }
           />
         }
         label=""

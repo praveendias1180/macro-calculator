@@ -1,17 +1,17 @@
 import React from "react"
 import Typography from "@mui/material/Typography"
-import MaleFemaleButtons from "./mc-male-female"
 
 import { useSelector, useDispatch } from 'react-redux'
-import { set_gender } from '../features/calc/calcSlice'
+import { set_activity } from '../features/calc/calcSlice'
+import ThreeAct from "./mc-three-act"
 
-const McGender = (props) => {
+const McActivity = (props) => {
 
   const count = useSelector((state) => state.calculationData.gender)
   const dispatch = useDispatch()
 
-  function handleNext(gender){
-    dispatch(set_gender(gender))
+  function handleNext(activity){
+    dispatch(set_activity(activity))
     props.handleNext();
   }
   
@@ -21,11 +21,11 @@ const McGender = (props) => {
         className="macro-heading"
         sx={{ fontSize: "h6.fontSize", mb: 4 }}
       >
-        Male or Female
+        How many times a week do you workout? 
       </Typography>
-      <MaleFemaleButtons handleNext={handleNext}></MaleFemaleButtons>
+      <ThreeAct handleNext={handleNext}></ThreeAct>
     </>
   )
 }
 
-export default McGender
+export default McActivity

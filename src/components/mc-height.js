@@ -53,14 +53,14 @@ const marks_metric = [
 
 const McHeight = () => {
 
-  const count = useSelector((state) => state.calc.gender)
+  const count = useSelector((state) => state.calculationData.gender)
   const dispatch = useDispatch()
 
   const [value, setValue] = React.useState(70)
   const [valueM, setMValue] = React.useState(178)
   const [metric, setMetric] = React.useState(false)
 
-  dispatch(set_height(value))
+  dispatch(set_height(valueM + ' cm'))
 
   function numFormatter(value) {
     if (metric) {
@@ -88,14 +88,15 @@ const McHeight = () => {
   }
 
   function onSliderChange(event, val) {
+
     if (metric) {
       setMValue(val)
       setValue(cm_to_in(val))
-      dispatch(set_height(cm_to_in(val)))
+      dispatch(set_height(val + ' cm'))
     } else {
       setMValue(in_to_cm(val))
       setValue(val)
-      dispatch(set_height(val))
+      dispatch(set_height(in_to_cm(val) + ' cm'))
     }
   }
 
@@ -120,6 +121,8 @@ const McHeight = () => {
           handleSwitch={handleSwitch}
           metric={metric}
           inputProps={{ "aria-label": "ant design" }}
+          option1="cm"
+          option2="ft"
         />
         <Box sx={{ pt: 1  }}>
         <Slider

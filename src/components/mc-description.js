@@ -1,17 +1,17 @@
 import React from "react"
 import Typography from "@mui/material/Typography"
-import MaleFemaleButtons from "./mc-male-female"
 
 import { useSelector, useDispatch } from 'react-redux'
-import { set_gender } from '../features/calc/calcSlice'
+import { set_description } from '../features/calc/calcSlice'
+import FourDesc from "./mc-four-desc"
 
-const McGender = (props) => {
+const McDescription = (props) => {
 
   const count = useSelector((state) => state.calculationData.gender)
   const dispatch = useDispatch()
 
-  function handleNext(gender){
-    dispatch(set_gender(gender))
+  function handleNext(description){
+    dispatch(set_description(description))
     props.handleNext();
   }
   
@@ -21,11 +21,11 @@ const McGender = (props) => {
         className="macro-heading"
         sx={{ fontSize: "h6.fontSize", mb: 4 }}
       >
-        Male or Female
+        Which option is most like you?
       </Typography>
-      <MaleFemaleButtons handleNext={handleNext}></MaleFemaleButtons>
+      <FourDesc handleNext={handleNext}></FourDesc>
     </>
   )
 }
 
-export default McGender
+export default McDescription

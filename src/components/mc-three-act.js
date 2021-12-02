@@ -6,14 +6,19 @@ import Typography from '@mui/material/Typography';
 
 const images = [
   {
-    url: '/images/buttons/male.jpg',
-    title: 'Male',
-    width: '50%',
+    url: '/images/buttons/black-box.jpg',
+    title: '2x or less',
+    width: '33.33%',
   },
   {
     url: '/images/buttons/female.jpg',
-    title: 'Female',
-    width: '50%',
+    title: '3x',
+    width: '33.33%',
+  },
+  {
+    url: '/images/buttons/black-box.jpg',
+    title: '4x or more',
+    width: '33.33%',
   },
 ];
 
@@ -67,22 +72,22 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
   top: 0,
   bottom: 0,
   backgroundColor: theme.palette.common.black,
-  opacity: 0.4,
+  opacity: 0.6,
   transition: theme.transitions.create('opacity'),
 }));
 
 const ImageMarked = styled('span')(({ theme }) => ({
   height: 3,
-  width: 36,
+  width: 18,
   backgroundColor: theme.palette.common.white,
   position: 'absolute',
   bottom: -2,
-  left: 'calc(50% - 18px)',
+  left: 'calc(50% - 9px)',
   transition: theme.transitions.create('opacity'),
 }));
 
 
-export default function MaleFemaleButtons(props) {
+export default function ThreeAct(props) {
   function handleClick(gender){
     props.handleNext(gender);
   }

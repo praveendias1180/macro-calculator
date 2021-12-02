@@ -13,11 +13,10 @@ export default function McDialog(props) {
   return (
     <div>
       <Dialog open={props.modelFormOpen} onClose={props.handleModalFormClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>See Your Results</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
+            Enter your name and email below to see your results. 100% safe and secure. No spam. We promise.
           </DialogContentText>
           <TextField
             autoFocus
@@ -40,7 +39,7 @@ export default function McDialog(props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={props.handleModalFormClose}>Cancel</Button>
-          <Button onClick={props.handleModalFormClose}>Subscribe</Button>
+          <Button onClick={props.handleModalFormClose}>See my results now!</Button>
         </DialogActions>
       </Dialog>
     </div>

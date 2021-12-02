@@ -17,3 +17,10 @@ https://macro-calc.web.app/
 ```
 firebase deploy --only hosting:macro-calc
 ```
+![Macro Calc](macro-calc-web-reduced.gif)
+
+# Redux Store Changes
+
+After each user action, Redux store actions are dispatched to the store and update the state of the application. There are two slices in the store. 'CalculationData' slice stores the data related to macro calucuation.
+
+![Macro Calc](macro-calc-web-redux.gif)

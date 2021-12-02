@@ -6,96 +6,93 @@ import McSwitch from "./mc-switch"
 import Stack from "@mui/material/Stack"
 
 import { useSelector, useDispatch } from 'react-redux'
-import { set_height } from '../features/calc/calcSlice'
+import { set_weight } from '../features/calc/calcSlice'
 
-let start_ft = 4
-let start_in = start_ft * 12
+let start_lb = 77 
+let end_lb = 330
 
-let end_ft = 7
-let end_in = end_ft * 12
-
-let start_cm = 121
-let end_cm = 213
+let start_kg = 35
+let end_kg = 150
 
 const marks = [
   {
-    value: 48,
-    label: "4 ft",
+    value: 70,
+    label: "70 lbs",
   },
   {
-    value: 60,
-    label: "5 ft",
+    value: 150,
+    label: "150 lbs",
   },
   {
-    value: 72,
-    label: "6 ft",
+    value: 230,
+    label: "230 lbs",
   },
   {
-    value: 84,
-    label: "7 ft",
+    value: 330,
+    label: "330 lbs",
   },
 ]
 
 const marks_metric = [
   {
-    value: 130,
-    label: "130 cm",
+    value: 35,
+    label: "35 Kg",
   },
   {
-    value: 170,
-    label: "170 cm",
+    value: 85,
+    label: "85 Kg",
   },
   {
-    value: 210,
-    label: "210 cm",
+    value: 150,
+    label: "150 Kg",
   },
 ]
 
-const McHeight = () => {
+const McWeight = () => {
 
-  const count = useSelector((state) => state.calc.gender)
+  const count = useSelector((state) => state.calculationData.gender)
   const dispatch = useDispatch()
 
-  const [value, setValue] = React.useState(70)
-  const [valueM, setMValue] = React.useState(178)
+  const [value, setValue] = React.useState(154)
+  const [valueM, setMValue] = React.useState(70)
   const [metric, setMetric] = React.useState(false)
 
-  dispatch(set_height(value))
+  dispatch(set_weight(valueM + " Kg"))
 
   function numFormatter(value) {
     if (metric) {
-      return Math.floor(value) + " cm"
+      return Math.floor(value) + " Kg"
     } else {
-      return Math.floor(value / 12) + " ft " + (value % 12) + " in"
+      return Math.floor(value) + " lbs "
     }
   }
 
-  function cm_to_in(cm) {
-    return Math.floor(cm / 2.54)
+  function kg_to_lb(kg) {
+    return Math.floor(kg * 2.2046)
   }
 
-  function in_to_cm(inch) {
-    return Math.floor(inch * 2.54)
+  function lb_to_kg(lb) {
+    return Math.floor(lb / 2.2046)
   }
 
   function handleSwitch(state) {
     setMetric(!metric)
     if (metric) {
-      setValue(cm_to_in(valueM))
+      setValue(kg_to_lb(valueM))
     } else {
-      setValue(in_to_cm(value))
+      setValue(lb_to_kg(value))
     }
   }
 
   function onSliderChange(event, val) {
     if (metric) {
       setMValue(val)
-      setValue(cm_to_in(val))
-      dispatch(set_height(cm_to_in(val)))
+      setValue(kg_to_lb(val))
+      dispatch(set_weight(val + ' Kg'))
     } else {
-      setMValue(in_to_cm(val))
+      setMValue(lb_to_kg(val))
       setValue(val)
-      dispatch(set_height(val))
+      dispatch(set_weight(lb_to_kg(val) + ' Kg'))
     }
   }
 
@@ -108,7 +105,7 @@ const McHeight = () => {
       }}
     >
       <Typography className="macro-heading" sx={{ fontSize: "h6.fontSize", mb: 4 }}>
-        Your Height
+        Your Weight
       </Typography>
       <Stack
         sx={{ flexDirection: { sx: "column", sm: "row" } }}
@@ -120,19 +117,21 @@ const McHeight = () => {
           handleSwitch={handleSwitch}
           metric={metric}
           inputProps={{ "aria-label": "ant design" }}
+          option1="kg"
+          option2="lb"
         />
         <Box sx={{ pt: 1  }}>
         <Slider
           sx={{ minWidth: { xs: 200, sm: 350} }}
-          aria-label="Height"
+          aria-label="Weight"
           defaultValue={70}
           value={metric ? valueM : value}
           valueLabelFormat={value => <div>{numFormatter(value)}</div>}
           onChange={onSliderChange}
           valueLabelDisplay="on"
           marks={metric ? marks_metric : marks}
-          min={metric ? start_cm : start_in}
-          max={metric ? end_cm : end_in}
+          min={metric ? start_kg : start_lb}
+          max={metric ? end_kg : end_lb}
         />
         </Box>
       </Stack>
@@ -140,4 +139,4 @@ const McHeight = () => {
   )
 }
 
-export default McHeight
+export default McWeight

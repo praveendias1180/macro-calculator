@@ -7,9 +7,12 @@ import { set_gender } from '../features/calc/calcSlice'
 
 const McResults = (props) => {
 
-  const gender = useSelector((state) => state.calc.gender)
-  const age = useSelector((state) => state.calc.age)
-  const height = useSelector((state) => state.calc.height)
+  const gender = useSelector((state) => state.calculationData.gender)
+  const age = useSelector((state) => state.calculationData.age)
+  const height = useSelector((state) => state.calculationData.height)
+  const weight = useSelector((state) => state.calculationData.weight)
+  const activity = useSelector((state) => state.calculationData.activity)
+  const description = useSelector((state) => state.calculationData.description)
 
   const dispatch = useDispatch()
 
@@ -26,9 +29,9 @@ const McResults = (props) => {
       >
        Results 
       </Typography>
-       <p>Gender: {gender}</p>
-       <p>Age: {age}</p>
-       <p>Height: {height}</p>
+       <p>Gender: {gender} Age: {age}</p>
+       <p>Height: {height} Weight: {weight}</p>
+       <p>Activity: {activity} Description: {description}</p>
     </>
   )
 }

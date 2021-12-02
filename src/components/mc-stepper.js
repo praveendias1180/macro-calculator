@@ -11,13 +11,16 @@ import McAge from "./mc-age"
 import McHeight from "./mc-height"
 import { alpha } from "@mui/material/styles"
 import McGender from "./mc-gender"
+import McResults from "./mc-results"
 
 import { useDispatch } from 'react-redux'
 import { increment } from '../features/counter/counterSlice'
-import McResults from "./mc-results"
+import McActivity from "./mc-activity"
 import McDialog from "./mc-dialog"
+import McWeight from "./mc-weight"
+import McDescription from "./mc-description"
 
-const steps = ["Gender", "Age", "Height", "Weight", "Activity", "Result"]
+const steps = ["Gender", "Age", "Height", "Weight", "Activity", "Description"]
 
 export default function MCStepper() {
   const dispatch = useDispatch()
@@ -123,11 +126,11 @@ export default function MCStepper() {
       >
         {activeStep === 0 ? <McGender handleNext={handleNext} /> : null}
         {activeStep === 1 ? <McAge handleNext={handleNext} /> : null}
-        {activeStep === 2 ? <McHeight /> : null}
-        {activeStep === 3 ? <McAge handleNext={handleNext} /> : null}
-        {activeStep === 4 ? <McHeight /> : null}
-        {activeStep === 5 ? <McGender handleNext={handleNext} /> : null}
-        {activeStep === 6 ? <McResults /> : null}
+        {activeStep === 2 ? <McHeight handleNext={handleNext} /> : null}
+        {activeStep === 3 ? <McWeight handleNext={handleNext} /> : null}
+        {activeStep === 4 ? <McActivity handleNext={handleNext} /> : null}
+        {activeStep === 5 ? <McDescription handleNext={handleNext} /> : null}
+        {activeStep === 6 ? <McResults handleNext={handleNext} /> : null}
       </Box>
       <Box
         sx={{

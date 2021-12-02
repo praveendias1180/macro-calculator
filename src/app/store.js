@@ -4,7 +4,7 @@ import calcReducer from '../features/calc/calcSlice'
 
 export default configureStore({
   reducer: {
-    counter: counterReducer,
-    calc: calcReducer,
+    stepCounter: counterReducer,
+    calculationData: calcReducer,
   },
 })
